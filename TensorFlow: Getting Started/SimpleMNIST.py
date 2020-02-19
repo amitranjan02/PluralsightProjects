@@ -3,8 +3,19 @@
 #   Simple NN to classify handwritten digits from MNIST dataset
 #
 
-import tensorflow as tf
-from tensorflow.examples.tutorials.mnist import input_data
+#import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
+#from tensorflow.examples.tutorials.mnist import input_data
+
+#!pip install tensorflow-datasets
+
+
+import tensorflow_datasets as tfds
+# Construct a tf.data.Dataset
+input_data = tfds.load(name="mnist", split=tfds.Split.TRAIN)
+
 
 # We use the TF helper function to pull down the data from the MNIST site
 mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
